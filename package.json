@@ -1,12 +1,12 @@
 {
-    "name": "react-template",
-    "displayName": "React Template",
+    "name": "snp-react-template",
+    "displayName": "Snp React Template",
     "description": "generate code template for react project",
-    "version": "0.1.1",
-    "publisher": "dabai",
+    "version": "0.0.1",
+    "publisher": "mixa9269",
     "repository": {
-        "type" : "git",
-        "url" : "https://github.com/dickenslian/vscode-react-template.git"
+        "type": "git",
+        "url": "https://github.com/mixa9269/vscode-react-template.git"
     },
     "icon": "images/icon.png",
     "engines": {
@@ -26,10 +26,12 @@
             {
                 "command": "extension.createFunctionalComponent",
                 "title": "Create Functional Component"
-            }, {
+            },
+            {
                 "command": "extension.createPureComponent",
                 "title": "Create Pure Component"
-            }, {
+            },
+            {
                 "command": "extension.createTsPureComponent",
                 "title": "Create TS Pure Component"
             }
@@ -39,10 +41,12 @@
                 {
                     "command": "extension.createFunctionalComponent",
                     "group": "1_modification"
-                }, {
+                },
+                {
                     "command": "extension.createPureComponent",
                     "group": "1_modification"
-                }, {
+                },
+                {
                     "command": "extension.createTsPureComponent",
                     "group": "1_modification"
                 }

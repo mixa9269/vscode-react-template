@@ -38,7 +38,7 @@ function generateClassName(dirName) {
     return stepTwoClassName;
 }
 
-function generateComponent(componentName, fullPath, componentType) {
+function generateComponent(componentName, fullPath) {
     if (fs.existsSync(fullPath)) {
         console.log(`${componentName} already exists, please choose another name.`);
         return;
@@ -50,36 +50,21 @@ function generateComponent(componentName, fullPath, componentType) {
 
     fs.mkdirSync(fullPath);
 
-    const fcTemplate = path.resolve(__dirname, './file_template/fc.txt');
-    const pcTemplate = path.resolve(__dirname, './file_template/pc.txt');
-    const tsPcTemplate = path.resolve(__dirname, './file_template/tspc.txt');
+    const fcTemplate = path.resolve(__dirname, './file_template/fc.jsx');
     const sassTemplate = path.resolve(__dirname, './file_template/scss.scss');
+    const indexTemplate = path.resolve(__dirname, './file_template/index.js')
 
-    let jsFile = componentType === ComponentType.TS_PURE_COMP ? path.resolve(`${fullPath}/index.tsx`) : path.resolve(`${fullPath}/index.js`);
-    const sassFile = path.resolve(`${fullPath}/index.scss`);
-
+    const indexJsFile = path.resolve(`${fullPath}/index.js`);
+    const jsFile = path.resolve(`${fullPath}/${className}.jsx`);
+    const sassFile = path.resolve(`${fullPath}/${className}.scss`);
 
     fs.writeFileSync(sassFile, fs.readFileSync(sassTemplate, { encoding: 'utf-8' }));
 
-    let jsFileContent;
-
-    if (componentType === ComponentType.FUNCTIONAL_COMP) {
-        jsFileContent = fs.readFileSync(fcTemplate, { encoding: 'utf-8' });
-    } else if (componentType === ComponentType.PURE_COMP) {
-        jsFileContent = fs.readFileSync(pcTemplate, { encoding: 'utf-8' });
-    } else if (componentType === ComponentType.TS_PURE_COMP) {
-        jsFileContent = fs.readFileSync(tsPcTemplate, { encoding: 'utf-8' });
-    }
-
+    const jsFileContent = fs.readFileSync(fcTemplate, { encoding: 'utf-8' });
     fs.writeFileSync(jsFile, jsFileContent.replace(/ClassName/g, className));
 
-    exec(`cd ${fullPath} && git add .`, (err) => {
-        if (err) {
-            console.log('command fail:', 'git add .');
-        } else {
-            console.log('command success:', 'git add .');
-        }
-    });
+    const jsIndexFileContent = fs.readFileSync(indexTemplate, { encoding: 'utf-8' });
+    fs.writeFileSync(indexJsFile, jsIndexFileContent.replace(/ClassName/g, className));
 
    vscode.window.showInformationMessage('component created successfully!');
 }

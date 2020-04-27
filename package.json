@@ -16,9 +16,7 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.createFunctionalComponent",
-        "onCommand:extension.createPureComponent",
-        "onCommand:extension.createTsPureComponent"
+        "onCommand:extension.createFunctionalComponent"
     ],
     "main": "./extension",
     "contributes": {
@@ -26,28 +24,12 @@
             {
                 "command": "extension.createFunctionalComponent",
                 "title": "Create Functional Component"
-            },
-            {
-                "command": "extension.createPureComponent",
-                "title": "Create Pure Component"
-            },
-            {
-                "command": "extension.createTsPureComponent",
-                "title": "Create TS Pure Component"
             }
         ],
         "menus": {
             "explorer/context": [
                 {
                     "command": "extension.createFunctionalComponent",
-                    "group": "1_modification"
-                },
-                {
-                    "command": "extension.createPureComponent",
-                    "group": "1_modification"
-                },
-                {
-                    "command": "extension.createTsPureComponent",
                     "group": "1_modification"
                 }
             ]

@@ -1,5 +1,6 @@
-@import "common/var";
+@use '~styles/variables' as *;
+@use '~styles/mixins' as *;
 
-:local(.style) {
-
+.root {
+  
 }
